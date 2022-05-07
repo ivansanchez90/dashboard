@@ -3,8 +3,8 @@ import NavbarNav from "./components/NavbarNav";
 import Sidebar from "./components/Sidebar";
 import "./App.scss";
 import Home from "./pages/Home";
-import Sales from "./pages/Products";
-import Clients from "./pages/Users";
+import Products from "./pages/Products";
+import Users from "./pages/Users";
 
 
 function App() {
@@ -17,8 +17,8 @@ function App() {
           <NavbarNav />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/sales" element={<Sales />} />
-            <Route path="/clients" element={<Clients />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/users" element={<Users />} />
           </Routes>
         </div>
       </div>

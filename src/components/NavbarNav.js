@@ -5,13 +5,10 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText
 } from 'reactstrap';
 
 const NavbarNav = (props) => {
@@ -21,8 +18,8 @@ const NavbarNav = (props) => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+      <Navbar light expand="md">
+        <NavbarBrand href="/">Corralon Sanchez</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ms-auto" navbar>
