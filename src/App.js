@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Users from "./pages/Users";
 import ProductsId from "./pages/ProductsId";
-
+import GeneralData from "./pages/GeneralData";
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
           <NavbarNav />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/data" element={<GeneralData />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<ProductsId />} />
             <Route path="/users" element={<Users />} />
