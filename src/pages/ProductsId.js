@@ -4,13 +4,13 @@ import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText } from "reac
 
 
 function ProductsId() {
-  const params = useParams();
-  const url = 'http://localhost:3000/api/products'
-  const [todos, setTodos] = useState()
+  const {id} = useParams();
+  const url = `http://localhost:3000/api/products/${id}`
+  const [product, setProduct] = useState()
   const fetchApi = async () => {
     const response = await fetch(url);
     const responseJson = await response.json()
-    setTodos(responseJson.products)
+    setProduct(responseJson.data)
   }
 
   useEffect(() => {
@@ -18,8 +18,7 @@ function ProductsId() {
   }, [])
   return (
     <>
-      {(!todos.id === params.id) ? 'cargando' : todos.map((todo, index) => {
-        return (
+      {(!product) ? 'cargando' : 
           <>
             <Card>
               <CardImg
@@ -30,22 +29,20 @@ function ProductsId() {
               />
               <CardBody>
                 <CardTitle tag="h5">
-                  <td key={index}>{todo.name}</td>
+                  <td>{product.name}</td>
                 </CardTitle>
                 <CardSubtitle
                   className="mb-2 text-muted"
                   tag="h6"
                 >
-                  <td key={index}>{todo.price}</td>
+                  <td>{product.price}</td>
                 </CardSubtitle>
                 <CardText>
-                  <td key={index}>{todo.description}</td>
+                  <td>{product.description}</td>
                 </CardText>
               </CardBody>
             </Card>
           </>
-        )
-      })
       }
     </>
   )
