@@ -82,11 +82,14 @@ function Products() {
                   <CardText>
                     <td key={index}>{todo.description}</td>
                   </CardText>
-                  <Link to={`/${todo.id}`}>
-                    <Button>
+                  <Link to={`/products/${todo.id}`}>
+                    <Button >
                       Description
                     </Button>
                   </Link>
+
+
+
                 </CardBody>
               </Card>
             </>
