@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Table,
 } from 'reactstrap';
 
 function Users() {
+  const url = 'http://localhost:3000/api/users'
+  const [todos, setTodos] = useState()
+  const fetchApi = async () => {
+    const response = await fetch(url);
+    const responseJson = await response.json()
+    setTodos(responseJson.users)
+  }
+
+  useEffect(() => {
+    fetchApi();
+  }, [])
+
   return (
     <Table striped>
       <thead>
@@ -12,59 +24,39 @@ function Users() {
             #
           </th>
           <th>
-            First Name
+            Name
           </th>
           <th>
-            Last Name
+            Email
           </th>
           <th>
-            Username
+            DNI
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">
-            1
-          </th>
-          <td>
-            Mark
-          </td>
-          <td>
-            Otto
-          </td>
-          <td>
-            @mdo
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            2
-          </th>
-          <td>
-            Jacob
-          </td>
-          <td>
-            Thornton
-          </td>
-          <td>
-            @fat
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            3
-          </th>
-          <td>
-            Larry
-          </td>
-          <td>
-            the Bird
-          </td>
-          <td>
-            @twitter
-          </td>
-        </tr>
+
+        {!todos ? 'cargando' : todos.map((todo, index) => {
+          return (
+            <>
+              <tr>
+                <th scope="row" key={index}>
+                  {todo.id}
+                </th>
+                <td key={index}>
+                  {todo.fullName}
+                </td>
+                <td key={index}>
+                  {todo.email}
+                </td>
+                <td key={index}>
+                  {todo.dni}
+                </td>
+              </tr>
+            </>
+          )
+        })}
+
       </tbody>
     </Table>
   )
